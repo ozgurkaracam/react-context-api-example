@@ -1,25 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import Navbarr from "./components/Navbar";
+import {Route, Router, Routes} from "react-router-dom";
+import Search from "./pages/Search";
+import About from "./pages/About";
+import Detail from "./pages/Detail";
+import {Container} from "react-bootstrap";
+import MainContext from "./context/context";
+
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    return (
+        <MainContext>
+            <Navbarr/>
+            <Container>
+                <Routes>
+
+                    <Route exact element={<Search/>} path='/'></Route>
+                    <Route exact element={<Search/>} path='/search'></Route>
+                    <Route element={<Detail/>} path='/:id'></Route>
+
+                    <Route element={<About/>} path='/about'></Route>
+                </Routes>
+            </Container>
+        </MainContext>
+    );
 }
 
 export default App;
